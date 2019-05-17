@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -48,6 +49,7 @@ namespace DeliveryUiPoc
                 await next();
                 if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
                 {
+                    Console.WriteLine("Content Not Found");
                     context.Request.Path = "/index.html";
                     context.Response.StatusCode = 200;
                     await next();
@@ -58,7 +60,7 @@ namespace DeliveryUiPoc
             options.DefaultFileNames.Clear();
             options.DefaultFileNames.Add("/index.html");
             app.UseDefaultFiles(options);
-            app.UseStaticFiles();
+            app.UseStaticFiles();            
             app.UseFileServer(enableDirectoryBrowsing: false);
             app.UseMvc();
         }
