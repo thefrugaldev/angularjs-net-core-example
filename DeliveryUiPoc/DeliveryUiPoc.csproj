@@ -9,7 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\app\draggable.js" />
+    <Content Include="src\app.js" />
+    <Content Include="src\draggable.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\index.html" />
   </ItemGroup>
 
@@ -21,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="lib\" />
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
