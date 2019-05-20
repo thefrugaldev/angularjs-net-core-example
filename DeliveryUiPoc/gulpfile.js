@@ -1,19 +1,17 @@
-﻿/// <binding AfterBuild='build-all' />
-var gulp = require("gulp");
+﻿/// <binding BeforeBuild='copy-src' />
+var gulp = require('gulp');
+var del = require('del');
 
 var root_path = {
-    webroot: "./wwwroot/",
-    app_src: "./src/",
-    package_lib: root_path.webroot + "app"
+    webroot: './wwwroot/',
+    app_src: './src/',
 };
 
 gulp.task('clean', function () {
-    return del([root_path.package_lib]);
+    return del([root_path.webroot] + '!(lib)/**/*');
 });
 
-gulp.task('copy-src', ['clean'], function () {
-    gulp.src(root_path.app_src)
-        .pipe(gulp.dest(root_path.package_lib));
-});
-
-gulp.task("copy-all", ["clean", "copy-src"]);
+gulp.task('copy-src', gulp.series('clean', function () {
+    return gulp.src(root_path.app_src + '**/*')
+        .pipe(gulp.dest(root_path.webroot));
+}));

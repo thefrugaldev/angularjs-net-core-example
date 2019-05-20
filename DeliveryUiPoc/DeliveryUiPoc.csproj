@@ -9,12 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="src\app.js" />
-    <Content Include="src\draggable.js" />
+    <Compile Remove="lib\**" />
+    <Content Remove="lib\**" />
+    <EmbeddedResource Remove="lib\**" />
+    <None Remove="lib\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\index.html" />
+    <Content Include="src\app\app.js" />
+    <Content Include="src\app\draggable.js" />
+    <Content Include="src\index.html" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,7 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="lib\" />
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
